@@ -20,12 +20,11 @@
 <p>Download python: https://www.python.org/downloads/</p>
 
 <br>
-<br>
-
 <h2>Como executar:</h2>
-<p>Para ver dados pré-armazenados: <strong>python main.py</strong></p>
-<p>para realizar seus próprios teste: <strong>python __init__.py</strong></p>
+<p>Para ver dados pré-armazenados:  <strong> python main.py</strong></p>
+<p>para realizar seus próprios teste:  <strong> python __init__.py</strong></p>
 
+<br>
 <h1>Pastas:</h1>
 <br>
 
