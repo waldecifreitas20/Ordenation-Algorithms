@@ -38,3 +38,7 @@
 
 <h2>./tests</h2>
 <p>Possui o único modulo que realiza os testes e salva os dados obtidos, utlizando módulos da pasta "./modules" </p>
+
+<br>
+<h1>Conclusão</h1>
+<p>Dos 3 algoritmos testados, bubble sort foi o menos eficiente para tamanhos de entrada muitos elevados, em contrapartida, counting sort mostrou-se muito eficiente para qualquer tamanho de entrada, tendo em vista sua complexidade O(n), ele sempre será mais eficiente que bubble sort e merge sort para qualquer que seja o valor de n. Portanto, conclui-se que, para entradas pequenas, qualquer um dos 3 algoritmos testados será eficiente, porém para entradas demasiadamente grandes, recomenda-se que bubble sort seja descartado.</p>
