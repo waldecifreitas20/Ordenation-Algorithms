@@ -1,21 +1,12 @@
-# Ordenation-Algorithims
-ESTE PROGRAMA EFETUA TESTES DE:<br/>
-  - TEMPO DE EXECUÇÂO<br/>
-  - NÚMERO DE COMPARAÇÕES EFETUADAS<br/>
-  - TROCAS DE POSIÇÃO REALIZADAS<br/>
-<br/>
-ALGORITMOS TESTADOS:<br/>
-  - BUBBLE SORT<br/>
-  - MERGE SORT<br/>
-  - COUNTING SORT<br/>
-<br/>
-O QUE ESTE PROGRAMA FAZ?<br/>
-<br/>
-  - REALIZA VERIFICAÇÕES PARA VETORES DE TAMANHO DE ENTRADA 10, 100, 1.000, 10.000 E 100.000 ELEMENTOS<br/>
-  - SALVA OS RESULTADOS NA PASTA "RESULTS" EM FORMATO DE ARQUIVO .json<br/>
-<br/>
-<br/>
-OBS:<br/>
-  - O TEMPO DE EXECUÇÃO ESTÁ SUJEITO A MUDANÇAS DEVIDO AS CONFIGURAÇÕES DE HARDWARE A QUAL SERÃO UTILIZADAS PARA EXECUTAR ESTE PROGRAMA<br/>
+# Ordenation-Algorithms
+<h1>Introdução</h1>
+<p>Este programa tem como objetivo realizar teste empíricos de algoritmos para seus piores casos e casos aleatorios e armazenar localmente os dados obtidos</p>
+<br>
+<h2>Algoritmos testados:<h2>
+<ul>
+    <li>BUBBLE SORT</li>
+    <li>MERGE SORT</li>
+    <li>COUNTING SORT</li>
+</ul>
 
 
