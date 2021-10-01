@@ -1,0 +1,7 @@
+{
+   "algorithm" : "COUNTINGSORT",
+   "case_type" : "worst_10_case",
+   "runtime" : "0.000049889087677",
+   "comparasions" : "0",
+   "swaps" : "10"
+} 

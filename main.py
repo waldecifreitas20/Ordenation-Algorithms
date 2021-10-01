@@ -1,32 +1,23 @@
-#EM CASO DE DUVIDAS A RESPEITO DESTE PROGRAMA, CONSULTE O AQUIVO "README.MD"
+from os import popen
+from os.path import abspath
 
-""" 
-CASES:
-    .WORST_CASES: PIORES CASOS
-    .RANDOM_CASES: CASOS ALEATORIOS
-        -> [0]: 10 ELEMENTOS
-        -> [1]: 100 ELEMENTOS
-        -> [2]: 1000 ELEMENTOS
-        -> [3]: 10000 ELEMENTOS
-        -> [4]: 100000 ELEMENTOS    
-"""
+def getPaths():
+    ALGORITHMS = ('bubblesort', 'countingsort', 'mergesort')
+    CASES = ('RANDOM', 'WORST')
+    ENTRIES = (10,100,1000,10000,20000)
 
-from tests import tests as test
-from modules import (
-    bubblesort as bubble,
-    mergesort as merge,
-    countingsort as counting,
-    casestest as CASES
-)
+    PATHS = []
 
-modules = (bubble, merge, counting)
+    for algorithm in ALGORITHMS:
+        for case in CASES:
+            for n in ENTRIES:
+                file = f'{algorithm.upper()}_{case}_{n}.json'
+                relative = f'results/{algorithm}/{file}'
+                PATHS.append(abspath(relative))
 
-#REALIZA TODOS OS TESTES DE PIOR CASO PARA TODOS OS ALGORITMOS
-for module in range(3):
-    for case in range(len(CASES.WORSTS_CASES)):
-        test.worst_case(CASES.WORSTS_CASES[case], modules[module])
+    return PATHS
 
-#REALIZA TODOS OS TESTES DE CASOS ALEATORIOS PARA TODOS OS ALGORITMOS
-for module in range(3):
-    for case in range(len(CASES.RANDOM_CASES)):
-        test.random_case(CASES.RANDOM_CASES[case], modules[module])
+PATHS = getPaths()
+for path in PATHS:
+    with open(path, 'r', encoding='utf-8') as path:
+        print(path.readable())
