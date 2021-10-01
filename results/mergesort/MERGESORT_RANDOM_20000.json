@@ -1,7 +1,7 @@
 {
    "algorithm" : "MERGESORT",
-   "case_type" : "worst_20000_case",
-   "runtime" : "0.017837655544281",
+   "case_type" : "random_20000_case",
+   "runtime" : "0.026801931858063",
    "comparasions" : "1188927",
-   "swaps" : "148016"
+   "swaps" : "132505"
 } 

@@ -1,7 +1,8 @@
 {
    "algorithm" : "BUBBLESORT",
    "case_type" : "random_100_case",
-   "runtime" : "0.003597974777222",
+   "runtime" : "0.002200055122375",
    "comparasions" : "9801",
-   "swaps" : "2326"
+   "swaps" : "2623"
+
 } 

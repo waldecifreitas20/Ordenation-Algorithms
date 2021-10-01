@@ -1,7 +1,7 @@
 {
    "algorithm" : "COUNTINGSORT",
    "case_type" : "worst_10000_case",
-   "runtime" : "0.009194648265839",
+   "runtime" : "0.007100450992584",
    "comparasions" : "0",
    "swaps" : "10000"
 } 
