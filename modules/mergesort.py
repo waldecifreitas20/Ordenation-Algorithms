@@ -4,6 +4,7 @@ _comparasions,_swaps = 0,0
 _FINAL_TIME,_INITAL_TIME = None,None
 NAME = 'MERGESORT'
 
+#ETAPA QUE "QUEBRA" O VETOR EM PARTES MENORES
 def merge1(array):
     global _comparasions, _INITAL_TIME
     _comparasions += 1
@@ -17,6 +18,7 @@ def merge1(array):
 
     return merge2(left, right)
 
+#ETAPA QUE REALIZA AS TROCAS
 def merge2(array_left, array_right):
     global _comparasions,_swaps
     i,j = 0,0
@@ -54,6 +56,7 @@ def merge2(array_left, array_right):
 
     return ordered_list
 
+#REALIZA O TEMPO DE EXECUÇÃO DO ALGORITMO
 def mergesort(array):
     global _FINAL_TIME, _comparasions,_swaps
     _comparasions,_swaps = 0,0

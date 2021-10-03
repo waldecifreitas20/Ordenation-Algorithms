@@ -1,35 +1,33 @@
 from os import system
+from time import sleep
 from os.path import abspath
 from json import loads as json
-from time import sleep
+
 from __init__ import startTests
+from tests.tests import _checkModule
 from modules import (
     bubblesort as bubble,
     mergesort as merge, 
     countingsort as counting,
-    casestest
+    casestest,
+    filesaver
 )
 
+#CARREGA DADOS DA BASE DE DADOS E RETORNA JSONS
 def init():
     global ENTRIES, CASES
     ALGORITHMS = ('bubblesort', 'countingsort', 'mergesort')
-    
 
-    #CARREGA OS DIRETORIOS DE TODOS OS ARQUIVOS
-    PATHS = []
+    #CONVERTE OS DADOS EM JSON
+    jsons = []
     for algorithm in ALGORITHMS:
         for case in CASES:
             for n in ENTRIES:
-                file = f'{algorithm.upper()}_{case}_{n}.json'
-                relative = f'results/{algorithm}/{file}'
-                PATHS.append(abspath(relative))
-
-    #CONVERTE TODOS OS ARQUIVOS EM JSONS
-    jsons = []
-    for path in PATHS:
-        with open(path, 'r', encoding='utf-8') as path:
-            to_json = path.read()
-            jsons.append(json(to_json))
+                file_name = f'{algorithm.upper()}_{case}_{n}.json'
+                path = f'database/{algorithm}/{file_name}'
+                with open(path, 'r', encoding='utf-8') as file:
+                    to_json = file.read()
+                    jsons.append(json(to_json))
     
     return jsons[:10], jsons[10:20], jsons[20:]
 
@@ -81,9 +79,11 @@ def showdata(algorithm_data):
         print('TEMPO DE EXECUCAO(s): {:.3f}'.format(float(runtime)))    
         print('-----------------------------------------')
 
+#LIMPA TELA DO TERMINAL
 def cleanscreen():
     system('cls')
 
+#SIMULA UM ENCERRAMENTO
 def finalize():
     for _ in range(2):
         print('FECHANDO APLICACAO.')
@@ -97,13 +97,13 @@ def finalize():
         cleanscreen()
     print("""
     DESENVOLVIDO POR: WALDECI FREITAS, WALFREDO FILHO & ALAN BITTENCOURT
-    VERSÃO: 3.5 - 01/10/21
+    VERSÃO: 3.7 - 01/10/21
     GitHub: https://github.com/waldecifreitas20/Ordenation-Algorithms/
 
     OBRIGADO POR UTILIZAR NOSSO PROGRAMA!
     """)
 
-
+#RETORNA CASO E TAMANHO DO VETOR
 def getcasetest(algorithm_name):
     print(f"""\n
     =========================================
@@ -127,20 +127,13 @@ def getcasetest(algorithm_name):
 
     return case,length
 
-def checkModule(module, array):
-    if module.NAME == 'BUBBLESORT':
-        return module.bubblesort(array)
-    elif module.NAME == 'MERGESORT':
-        return module.mergesort(array)
-    else: 
-        return module.countingsort(array)
-
+#APRESENTA DADOS PRE E POS ORDENAÇÃO
 def toOrder(module):
    
     case, length = getcasetest(module.NAME)
     array = CASES_VALUES[case][length]
     print(f'VETOR PRE-ORDENACAO -> {array}')
-    ordered = checkModule(module,array)
+    ordered = _checkModule(module,array)
     print('\n-----------------------------------------\n')
     print(f'VETOR POS-ORDENACAO -> {ordered}')
     print(f'No. COMPARACOES: {module.getComparasions()}')
@@ -148,13 +141,19 @@ def toOrder(module):
     print(f'TEMPO DE EXECUCAO: {module.getRuntime()}\n\n')
     save = input('DESEJA SALVAR ESTES DADOS NA BASE DE DADOS?(s/n)\nR: ')
     if save.lower() == 's':
-        savedate
-    
-def
+        print('SALVANDO DADOS...')
+        datasaver(module, case, length)
+        print('DADOS SALVOS COM SUCESSO!')
+
+#SALVA DADOS NA BASE DE DADOS
+def datasaver(module, case, length):
+    global CASES, ENTRIES
+    data = filesaver.setData(module.getRuntime(), module)
+    filesaver.saveAsJson(f'{CASES[case]}_{ENTRIES[length]}', module.NAME, data)
 
 
 #VARIAVEIS DE CONSULTA
-CASES = ('RANDOM', 'WORST')
+CASES = ('WORST', 'RANDOM')
 ENTRIES = ('10','100','1000','10000','20000')
 CASES_VALUES = (casestest.WORSTS_CASES, casestest.RANDOM_CASES)
 

@@ -4,6 +4,7 @@ _comparasions,_swaps = 0,0
 _INITIAL_TIME,_FINAL_TIME = None,None
 NAME = 'COUNTINGSORT'
 
+
 def countingsort(array: list):
     global _swaps,_INITIAL_TIME,_FINAL_TIME
 

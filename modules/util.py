@@ -12,6 +12,3 @@ def showfinalmessage(algorithm_name):
 
 def updateruntime(runtime, number_test):
     return runtime/number_test
-
-def showArray(array, moment):
-    print(f'\nVETOR {moment}-ORDENACAO: {array}\n')

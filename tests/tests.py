@@ -1,6 +1,7 @@
 from modules.util import *
 from modules import filesaver
 
+#CHECA O MODULO A SER UTILIZADO
 def _checkModule(module, array):
     if module.NAME == 'BUBBLESORT':
         return module.bubblesort(array)
@@ -18,8 +19,6 @@ def _test(array, case, module):
         ordered_array = _checkModule(module, array)
         runtime += module.getRuntime()
     runtime = updateruntime(runtime, NUMBER_TEST)
-
-    #showArray(ordered_array, 'POS')
 
     RESULTS_WORST_10 = filesaver.setData(runtime, module)
     filesaver.saveAsJson(CASE, module.NAME, RESULTS_WORST_10)
