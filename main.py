@@ -2,8 +2,16 @@ from os import system
 from os.path import abspath
 from json import loads as json
 from time import sleep
+from __init__ import startTests
+from modules import (
+    bubblesort as bubble,
+    mergesort as merge, 
+    countingsort as counting,
+    casestest
+)
+
 def init():
-    global ENTRIES
+    global ENTRIES, CASES
     ALGORITHMS = ('bubblesort', 'countingsort', 'mergesort')
     
 
@@ -87,45 +95,102 @@ def finalize():
         print('FECHANDO APLICACAO...')
         sleep(0.3)
         cleanscreen()
+    print("""
+    DESENVOLVIDO POR: WALDECI FREITAS, WALFREDO FILHO & ALAN BITTENCOURT
+    VERSÃO: 3.5 - 01/10/21
+    GitHub: https://github.com/waldecifreitas20/Ordenation-Algorithms/
 
-        
+    OBRIGADO POR UTILIZAR NOSSO PROGRAMA!
+    """)
+
+
+def getcasetest(algorithm_name):
+    print(f"""\n
+    =========================================
+                MENU {algorithm_name}
+    =========================================
+    [-] ESCOLHA O TAMANHO DO VETOR A SER ORDENADO: 
+        0) 10
+        1) 100
+        2) 1000
+        3) 10000
+        4) 20000
+    -----------------------------------------""")
+    length = int(input('    R: '))
+    print("""
+    -----------------------------------------
+    [-] ESCOLHA O CASO: 
+        0) ORDEM DECRESCENTE
+        1) VALORES ALEATORIOS
+    -----------------------------------------""")
+    case = int(input('    R: '))
+
+    return case,length
+
+def checkModule(module, array):
+    if module.NAME == 'BUBBLESORT':
+        return module.bubblesort(array)
+    elif module.NAME == 'MERGESORT':
+        return module.mergesort(array)
+    else: 
+        return module.countingsort(array)
+
+def toOrder(module):
+   
+    case, length = getcasetest(module.NAME)
+    array = CASES_VALUES[case][length]
+    print(f'VETOR PRE-ORDENACAO -> {array}')
+    ordered = checkModule(module,array)
+    print('\n-----------------------------------------\n')
+    print(f'VETOR POS-ORDENACAO -> {ordered}')
+    print(f'No. COMPARACOES: {module.getComparasions()}')
+    print(f'TROCAS EFETUADAS: {module.getSwaps()}')
+    print(f'TEMPO DE EXECUCAO: {module.getRuntime()}\n\n')
+    save = input('DESEJA SALVAR ESTES DADOS NA BASE DE DADOS?(s/n)\nR: ')
+    if save.lower() == 's':
+        savedate
+    
+def
+
+
 #VARIAVEIS DE CONSULTA
 CASES = ('RANDOM', 'WORST')
 ENTRIES = ('10','100','1000','10000','20000')
+CASES_VALUES = (casestest.WORSTS_CASES, casestest.RANDOM_CASES)
 
-#DADOS DOS ALGORITMOS EM JSON
+#DADOS PRE-INICIALIZADOS EM JSON
 ALGORITHMS_DATA = list(init())
 
 stop = 's'
 while(stop.lower() != 'n'):    
 
     print("""\n
-    =========================================
-                MENU PRINCIPAL
-    =========================================
-    1) DADOS BUBBLE SORT
-    2) DADOS COUNTING SORT
-    3) DADOS MERGE SORT
-    4) VISUALIZAR TODOS OS DADOS SALVOS
-    0) FECHAR PROGRAMA
-    =========================================""")
+=========================================
+            MENU PRINCIPAL
+=========================================
+1) BUBBLE SORT
+2) COUNTING SORT
+3) MERGE SORT
+4) VISUALIZAR DADOS SALVOS
+5) ATUALIZAR BASE DE DADOS (TESTE GERAL)
+0) FECHAR PROGRAMA
+=========================================""")
     choice = int(input('ESCOLHA UMA OPCAO: '))
 
     if choice == 0:
         break
-    if choice == 4:
+    elif choice == 1:
+        toOrder(bubble)
+    elif choice == 2:
+        toOrder(counting)
+    elif choice == 3:
+        toOrder(merge)
+    elif choice == 4:
         for algorithm in ALGORITHMS_DATA:
             showdata(algorithm)
-    else:
-        showdata(ALGORITHMS_DATA[choice-1])
-
+        print('\n\n')
+    elif choice == 5:
+        startTests()
     stop = input('DESEJA VOLTAR AO MENU PRINCIPAL?(s/n)\nR: ')
 
 finalize()
-print("""
-DESENVOLVIDO POR: WALDECI FREITAS, WALFREDO FILHO & ALAN BITTENCOURT
-VERSÃO: 3.3 - 01/10/21
-GitHub: https://github.com/waldecifreitas20/Ordenation-Algorithms/
-
-OBRIGADO POR UTILIZAR NOSSO PROGRAMA!
-""")

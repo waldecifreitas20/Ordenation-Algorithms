@@ -19,7 +19,7 @@ def _test(array, case, module):
         runtime += module.getRuntime()
     runtime = updateruntime(runtime, NUMBER_TEST)
 
-    showArray(ordered_array, 'POS')
+    #showArray(ordered_array, 'POS')
 
     RESULTS_WORST_10 = filesaver.setData(runtime, module)
     filesaver.saveAsJson(CASE, module.NAME, RESULTS_WORST_10)

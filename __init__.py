@@ -19,14 +19,15 @@ from modules import (
     casestest as CASES
 )
 
-modules = (bubble, merge, counting)
+def startTests():
+    modules = (bubble, merge, counting)
 
-#REALIZA TODOS OS TESTES DE PIOR CASO PARA TODOS OS ALGORITMOS
-for module in range(3):
-    for case in range(len(CASES.WORSTS_CASES)):
-        test.worst_case(CASES.WORSTS_CASES[case], modules[module])
+    #REALIZA TODOS OS TESTES DE PIOR CASO PARA TODOS OS ALGORITMOS
+    for module in range(3):
+        for case in range(len(CASES.WORSTS_CASES)):
+            test.worst_case(CASES.WORSTS_CASES[case], modules[module])
+    #REALIZA TODOS OS TESTES DE CASOS ALEATORIOS PARA TODOS OS ALGORITMOS
+    for module in range(3):
+        for case in range(len(CASES.RANDOM_CASES)):
+            test.random_case(CASES.RANDOM_CASES[case], modules[module])
 
-#REALIZA TODOS OS TESTES DE CASOS ALEATORIOS PARA TODOS OS ALGORITMOS
-for module in range(3):
-    for case in range(len(CASES.RANDOM_CASES)):
-        test.random_case(CASES.RANDOM_CASES[case], modules[module])
