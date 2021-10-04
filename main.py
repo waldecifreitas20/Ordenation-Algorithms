@@ -2,9 +2,10 @@ from os import system
 from time import sleep
 from os.path import abspath
 from json import loads as json
+from typing import Tuple
 
 from __init__ import startTests
-from tests.tests import _checkModule
+from controller.controller import checkModule
 from modules import (
     bubblesort as bubble,
     mergesort as merge, 
@@ -133,7 +134,7 @@ def toOrder(module):
     case, length = getcasetest(module.NAME)
     array = CASES_VALUES[case][length]
     print(f'VETOR PRE-ORDENACAO -> {array}')
-    ordered = _checkModule(module,array)
+    ordered = checkModule(module,array)
     print('\n-----------------------------------------\n')
     print(f'VETOR POS-ORDENACAO -> {ordered}')
     print(f'No. COMPARACOES: {module.getComparasions()}')
@@ -150,6 +151,7 @@ def datasaver(module, case, length):
     global CASES, ENTRIES
     data = filesaver.setData(module.getRuntime(), module)
     filesaver.saveAsJson(f'{CASES[case]}_{ENTRIES[length]}', module.NAME, data)
+
 
 
 #VARIAVEIS DE CONSULTA

@@ -2,7 +2,7 @@ from modules.util import *
 from modules import filesaver
 
 #CHECA O MODULO A SER UTILIZADO
-def _checkModule(module, array):
+def checkModule(module, array):
     if module.NAME == 'BUBBLESORT':
         return module.bubblesort(array)
     elif module.NAME == 'MERGESORT':
@@ -10,13 +10,14 @@ def _checkModule(module, array):
     else: 
         return module.countingsort(array)
 
+#REALIZA OS TESTES
 def _test(array, case, module):
     runtime,LENGTH = 0,len(array)
     CASE = f'{case}_{LENGTH}'
     showinitmessage(module.NAME, 'PIOR', LENGTH)
 
     for _ in range(NUMBER_TEST):
-        ordered_array = _checkModule(module, array)
+        ordered_array = checkModule(module, array)
         runtime += module.getRuntime()
     runtime = updateruntime(runtime, NUMBER_TEST)
 

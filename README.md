@@ -21,8 +21,8 @@
 
 <br>
 <h2>Como executar:</h2>
-<p>Para ver dados pré-armazenados:  <strong> python main.py</strong></p>
-<p>Para realizar seus próprios teste:  <strong> python __init__.py</strong></p>
+<p>Programa principal:  <strong> python main.py</strong></p>
+<p>Programa secundário(Realiza todos os testes e salva):  <strong> python __init__.py</strong></p>
 
 <br>
 <h1>Pastas:</h1>

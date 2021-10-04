@@ -11,7 +11,7 @@ CASES:
         -> [4]: 100000 ELEMENTOS    
 """
 
-from tests import tests as test
+from controller import controller as test
 from modules import (
     bubblesort as bubble,
     mergesort as merge,
