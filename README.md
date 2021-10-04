@@ -23,7 +23,7 @@
 <br>
 <h2>Como executar:</h2>
 <p>No terminal:  <strong> python main.py</strong></p>
-<p><strong>Obs: não foi utilizado nenhum tratamento de exceções. Caso o usuário informar um valor não esperado, o programa acusará erro e irá ser encerrado</strong>
+<p><strong>Obs: não foi utilizado nenhum tratamento de exceções. Caso o usuário informe um valor não esperado, o programa acusará erro e irá ser encerrado</strong>
 
 <br>
 <h1>Pastas:</h1>
