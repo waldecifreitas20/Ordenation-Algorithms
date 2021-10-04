@@ -15,14 +15,14 @@
     <li>10000 elementos</li>
     <li>20000 elementos</li>
 </ul>
+    
 <h2>Requisitos:</h2>
 <p>Python 3.8 ou superior</p>
 <p>Download python: https://www.python.org/downloads/</p>
 
 <br>
 <h2>Como executar:</h2>
-<p>Programa principal:  <strong> python main.py</strong></p>
-<p>Programa secundário(Realiza todos os testes e salva):  <strong> python __init__.py</strong></p>
+<p>No terminal:  <strong> python main.py</strong></p>
 
 <br>
 <h1>Pastas:</h1>
@@ -36,8 +36,8 @@
 <p>Armazena todos os resultados dos testes em 3 pastas nomeadas conforme o algoritmo utilizado para realizar os testes. Embora a cada execução de "__init__.py" sobrescreva seus dadods, é fundamental para o programa.</p>
 <br>
 
-<h2>./tests</h2>
-<p>Possui o único modulo que realiza os testes e salva os dados obtidos, utlizando módulos da pasta "./modules" </p>
+<h2>./controller</h2>
+<p>Possui o módulo de controle que realiza as chamadas de outros modulos da pasta "./modules" para realizar os testes.</p>
 
 <br>
 <h1>Conclusão</h1>
