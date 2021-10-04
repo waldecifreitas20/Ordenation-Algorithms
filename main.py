@@ -1,18 +1,10 @@
 from os import system
 from time import sleep
-from os.path import abspath
 from json import loads as json
-from typing import Tuple
 
-from __init__ import startTests
-from controller.controller import checkModule
-from modules import (
-    bubblesort as bubble,
-    mergesort as merge, 
-    countingsort as counting,
-    casestest,
-    filesaver
-)
+from controller.controller import checkModule, startalltests
+from modules.essentials_imports import *
+from views.views import *
 
 #CARREGA DADOS DA BASE DE DADOS E RETORNA JSONS
 def init():
@@ -80,29 +72,48 @@ def showdata(algorithm_data):
         print('TEMPO DE EXECUCAO(s): {:.3f}'.format(float(runtime)))    
         print('-----------------------------------------')
 
-#LIMPA TELA DO TERMINAL
-def cleanscreen():
-    system('cls')
+#APRESENTA DADOS PRE E POS ORDENAÇÃO
+def toOrder(module):
+   
+    case, length = getcasetest(module.NAME)
+    array = CASES_VALUES[case][length]
 
-#SIMULA UM ENCERRAMENTO
-def finalize():
-    for _ in range(2):
-        print('FECHANDO APLICACAO.')
-        sleep(0.3)
-        cleanscreen()
-        print('FECHANDO APLICACAO..')
-        sleep(0.3)
-        cleanscreen()
-        print('FECHANDO APLICACAO...')
-        sleep(0.3)
-        cleanscreen()
-    print("""
-    DESENVOLVIDO POR: WALDECI FREITAS, WALFREDO FILHO & ALAN BITTENCOURT
-    VERSÃO: 3.7 - 01/10/21
-    GitHub: https://github.com/waldecifreitas20/Ordenation-Algorithms/
+    print(f'VETOR PRE-ORDENACAO -> {array}')
+    ordered = checkModule(module,array)
+    
+    print('\n-----------------------------------------\n')
+    print(f'VETOR POS-ORDENACAO -> {ordered}')
+    print(f'No. COMPARACOES: {module.getComparasions()}')
+    print(f'TROCAS EFETUADAS: {module.getSwaps()}')
+    print(f'TEMPO DE EXECUCAO: {module.getRuntime()}\n\n')
+    
+    save = input('DESEJA SALVAR ESTES DADOS NA BASE DE DADOS?(s/n)\nR: ')
+    if save.lower() == 's':
+        print('SALVANDO DADOS...')
+        datasaver(module, case, length)
+        print('DADOS SALVOS COM SUCESSO!')
 
-    OBRIGADO POR UTILIZAR NOSSO PROGRAMA!
-    """)
+#VERIFICA A ESCOLHA DO USUARIO
+def checkchoice():
+    choice = int(input('ESCOLHA UMA OPCAO: '))
+
+    if choice == 0:
+        return True
+    elif choice == 1:
+        toOrder(bubble)
+    elif choice == 2:
+        toOrder(counting)
+    elif choice == 3:
+        toOrder(merge)
+    elif choice == 4:
+        for algorithm in ALGORITHMS_DATA:
+            showdata(algorithm)
+        print('\n\n')
+    elif choice == 5:
+        startalltests()
+    stop = input('DESEJA VOLTAR AO MENU PRINCIPAL?(s/n)\nR: ')
+
+    return stop == 's'
 
 #RETORNA CASO E TAMANHO DO VETOR
 def getcasetest(algorithm_name):
@@ -128,24 +139,6 @@ def getcasetest(algorithm_name):
 
     return case,length
 
-#APRESENTA DADOS PRE E POS ORDENAÇÃO
-def toOrder(module):
-   
-    case, length = getcasetest(module.NAME)
-    array = CASES_VALUES[case][length]
-    print(f'VETOR PRE-ORDENACAO -> {array}')
-    ordered = checkModule(module,array)
-    print('\n-----------------------------------------\n')
-    print(f'VETOR POS-ORDENACAO -> {ordered}')
-    print(f'No. COMPARACOES: {module.getComparasions()}')
-    print(f'TROCAS EFETUADAS: {module.getSwaps()}')
-    print(f'TEMPO DE EXECUCAO: {module.getRuntime()}\n\n')
-    save = input('DESEJA SALVAR ESTES DADOS NA BASE DE DADOS?(s/n)\nR: ')
-    if save.lower() == 's':
-        print('SALVANDO DADOS...')
-        datasaver(module, case, length)
-        print('DADOS SALVOS COM SUCESSO!')
-
 #SALVA DADOS NA BASE DE DADOS
 def datasaver(module, case, length):
     global CASES, ENTRIES
@@ -162,36 +155,9 @@ CASES_VALUES = (casestest.WORSTS_CASES, casestest.RANDOM_CASES)
 #DADOS PRE-INICIALIZADOS EM JSON
 ALGORITHMS_DATA = list(init())
 
-stop = 's'
-while(stop.lower() != 'n'):    
-
-    print("""\n
-=========================================
-            MENU PRINCIPAL
-=========================================
-1) BUBBLE SORT
-2) COUNTING SORT
-3) MERGE SORT
-4) VISUALIZAR DADOS SALVOS
-5) ATUALIZAR BASE DE DADOS (TESTE GERAL)
-0) FECHAR PROGRAMA
-=========================================""")
-    choice = int(input('ESCOLHA UMA OPCAO: '))
-
-    if choice == 0:
-        break
-    elif choice == 1:
-        toOrder(bubble)
-    elif choice == 2:
-        toOrder(counting)
-    elif choice == 3:
-        toOrder(merge)
-    elif choice == 4:
-        for algorithm in ALGORITHMS_DATA:
-            showdata(algorithm)
-        print('\n\n')
-    elif choice == 5:
-        startTests()
-    stop = input('DESEJA VOLTAR AO MENU PRINCIPAL?(s/n)\nR: ')
+stop = False
+while(not stop):    
+    mainmenu()
+    stop = checkchoice()
 
 finalize()

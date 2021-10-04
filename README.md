@@ -32,7 +32,7 @@
 <p>Armazena todos os módulos fundamentais para a execução do programa</p>
 <br>
 
-<h2>./results</h2>
+<h2>./database</h2>
 <p>Armazena todos os resultados dos testes em 3 pastas nomeadas conforme o algoritmo utilizado para realizar os testes. Embora a cada execução de "__init__.py" sobrescreva seus dadods, é fundamental para o programa.</p>
 <br>
 

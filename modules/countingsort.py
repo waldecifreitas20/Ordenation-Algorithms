@@ -12,16 +12,17 @@ def countingsort(array: list):
     _INITIAL_TIME = time()
 
     bigger =  max(array)
-    counter_array = [0 for _ in range(bigger+1)]
+    counter_array = [0 for _ in range(bigger+1)] #INICIALIZA O VETOR COM ZEROS
 
     for i in range(len(array)):
-        counter_array[array[i]] += 1
+        counter_array[array[i]] += 1 #FAZ A CONTAGEM DAS REPETICOES
    
     for i in range(len(counter_array)-1):
-        counter_array[i+1] = counter_array[i] + counter_array[i+1]
+        counter_array[i+1] = counter_array[i] + counter_array[i+1] #OBTEM OS INDICES
     
     ordered_array = list(range(len(array)))
 
+    #REALIZA AS TROCAS
     for i in range(len(array)):
         counter_array[array[i]] -= 1
         index = counter_array[array[i]]

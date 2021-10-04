@@ -1,3 +1,5 @@
+#MODULO DE FUNCOES E VARIAVEIS AUXILIARES
+
 NUMBER_TEST = 20
 
 def showinitmessage(algorithm_name, case, array_length):

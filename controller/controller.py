@@ -1,5 +1,5 @@
 from modules.util import *
-from modules import filesaver
+from modules.essentials_imports import *
 
 #CHECA O MODULO A SER UTILIZADO
 def checkModule(module, array):
@@ -10,7 +10,7 @@ def checkModule(module, array):
     else: 
         return module.countingsort(array)
 
-#REALIZA OS TESTES
+#REALIZA OS TESTES ESPECIFICADOS
 def _test(array, case, module):
     runtime,LENGTH = 0,len(array)
     CASE = f'{case}_{LENGTH}'
@@ -26,11 +26,22 @@ def _test(array, case, module):
 
     showfinalmessage(module.NAME)
 
+#REALIZA TODOS TESTES POSSIVEIS
+def startalltests():
+    modules = (bubble, merge, counting)
+
+    #REALIZA TODOS OS TESTES DE PIOR CASO PARA TODOS OS ALGORITMOS
+    for module in range(3):
+        for case in range(len(CASES.WORSTS_CASES)):
+            worst_case(CASES.WORSTS_CASES[case], modules[module])
+    #REALIZA TODOS OS TESTES DE CASOS ALEATORIOS PARA TODOS OS ALGORITMOS
+    for module in range(3):
+        for case in range(len(CASES.RANDOM_CASES)):
+            random_case(CASES.RANDOM_CASES[case], modules[module])
+
+
 def worst_case(array, module):
     _test(array, 'WORST', module)
     
 def random_case(array, module):
     _test(array, 'RANDOM', module)
-
-
-
