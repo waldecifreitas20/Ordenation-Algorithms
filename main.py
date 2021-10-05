@@ -1,5 +1,3 @@
-from os import system
-from time import sleep
 from json import loads as json
 
 from controller.controller import checkModule, startalltests
@@ -113,7 +111,7 @@ def checkchoice():
         startalltests()
     stop = input('DESEJA VOLTAR AO MENU PRINCIPAL?(s/n)\nR: ')
 
-    return stop == 's'
+    return stop.lower() != 's'
 
 #RETORNA CASO E TAMANHO DO VETOR
 def getcasetest(algorithm_name):
