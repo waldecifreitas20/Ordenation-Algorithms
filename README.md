@@ -3,9 +3,9 @@
 <br>
 <h2>Algoritmos testados:<h2>
 
-    BUBBLE SORT
-    MERGE SORT
-    COUNTING SORT
+    <li>BUBBLE SORT</li>
+    <li>MERGE SORT</li>
+    <li>COUNTING SORT</li>
 
 <h2>Tamanhos de entrada testados:<h2>
 <ul>
